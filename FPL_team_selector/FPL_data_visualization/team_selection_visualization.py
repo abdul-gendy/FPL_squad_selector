@@ -221,6 +221,7 @@ class visualize_team_selection_352(visualize_team_selection_442):
         self.draw_player("yellow", -75, 150, self.list_of_strikers[0]) 
         self.draw_player("yellow", 75, 150, self.list_of_strikers[1])  
 
+
 class visualize_team_selection_433(visualize_team_selection_442):
 
     def draw_bench(self):
