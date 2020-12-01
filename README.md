@@ -32,3 +32,6 @@ import FPL_team_selector
 FPL_player_selector.play_wildcard(442)
 ```
 
+### Sample Output
+
+<img src="test/sample_outputs/Team1.PNG" alt="alt text" width="700" height="700">
