@@ -3,7 +3,7 @@ from FPL_data_processing import calculate_players_scores_weighted_avg_sum, team_
 from FPL_data_visualization import visualize_team_selection_442, visualize_team_selection_352, visualize_team_selection_343, visualize_team_selection_433
 
 
-def main():
+def play_wildcard():
     FPL_API_url = 'https://fantasy.premierleague.com/api/bootstrap-static/'
     JSON_Data = load_json_data_from_FPL_url(FPL_API_url)
     players_info, teams_info, events_info = parse_main_FPL_API(JSON_Data)
@@ -23,4 +23,4 @@ def main():
 
 if __name__ == "__main__":
     print("currently selecting the best team of 15, please be patient")
-    main()
+    play_wildcard()
