@@ -30,4 +30,5 @@ def get_players_future_games_scores(players_info):
         Player_id = players_info['id'].iloc[i]
         Player_Fixtures = get_players_future_games_info(Player_id)
         Difficulty_Mean = Player_Fixtures['difficulty'].iloc[0:Num_Future_Games_To_Analyze].mean(axis=0)
-        players_info['Future Games Score'].iloc[i] = (5-Difficulty_Mean)
+        #players_info['Future Games Score'].iloc[i] = (5-Difficulty_Mean)
+        players_info.loc['Future Games Score', i] = (5-Difficulty_Mean)

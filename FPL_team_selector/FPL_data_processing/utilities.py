@@ -108,6 +108,7 @@ def add_players_full_name(players_info):
 
     '''
     players_info['full_name'] = players_info['first_name'] + '_' + players_info ['second_name']
+    players_info['full_name'].str.replace(" ","")
 
 
 def score_and_cost_dict_creator(players_info):

@@ -1,6 +1,7 @@
 import pulp as p 
 import pandas as pd
 from .utilities import split_based_on_teams_and_players_positions, add_players_full_name, score_and_cost_dict_creator
+from pdb import set_trace as bp
 
 def team_selection_using_linear_optimization(players_info):
     '''
@@ -21,7 +22,7 @@ def team_selection_using_linear_optimization(players_info):
     '''
     number_of_prem_teams = 20
     number_of_playing_positions = 4
-
+    bp()
     add_players_full_name(players_info)
     players_info_list_of_dataframes = split_based_on_teams_and_players_positions(players_info)
 
@@ -104,7 +105,7 @@ def team_selection_using_linear_optimization(players_info):
         team_members_segment = goalie_segment + def_segment + mid_segment + str_segment
         Lp_prob += (team_members_segment) <= 3
   
-    Lp_prob.solve()   
+    Lp_prob.solve(p.apis.PULP_CBC_CMD(msg=0))   
 
     list_of_selected_defenders = []
     list_of_selected_midfielders = []
