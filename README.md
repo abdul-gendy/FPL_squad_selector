@@ -2,7 +2,7 @@
 
 This package selects the best 15 players to choose when playing a wildcard on Fantasy premier league on any given week
 
-  - Selects the best players using linear optimization
+  - Selects the best players by analyzing the data provided by the fantasy premier league API
   - creates a visualization of the selected players
 
 
