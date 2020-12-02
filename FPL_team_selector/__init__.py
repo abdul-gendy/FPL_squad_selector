@@ -1,1 +1,0 @@
-from initiate_team_selection_pipeline import play_wildcard

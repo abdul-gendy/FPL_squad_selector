@@ -4,7 +4,7 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="FPL_team_selector",
+    name="FPL-team-selector",
     version="0.0.1",
     author="Abdulrahman Elgendy",
     author_email="Abdul.Elgendy@outlook.com",
@@ -12,7 +12,7 @@ setuptools.setup(
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/abdul-gendy/Fantasy_Premier_League_Team_Selector",
-    download_url=,
+    download_url="https://github.com/abdul-gendy/FPL_team_selector/archive/v0.0.1.tar.gz",
     packages=setuptools.find_packages(),
     classifiers=[
         "Programming Language :: Python :: 3",

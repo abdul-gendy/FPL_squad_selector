@@ -13,7 +13,7 @@ This package selects the best 15 players to choose when playing a wildcard on Fa
 You can install the package using pip by running the following:
 
 ```
-pip install FPL_team_selector
+pip install FPL-team-selector
 ```
 ##### Download from source
 
