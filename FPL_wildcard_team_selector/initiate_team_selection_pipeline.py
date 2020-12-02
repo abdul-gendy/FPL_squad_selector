@@ -1,7 +1,7 @@
 import sys
-from FPL_data_collection import load_json_data_from_FPL_url, parse_main_FPL_API
-from FPL_data_processing import calculate_players_scores_weighted_avg_sum, team_selection_using_linear_optimization, turn_series_to_float
-from FPL_data_visualization import visualize_team_selection_442, visualize_team_selection_352, visualize_team_selection_343, visualize_team_selection_433
+from .FPL_data_collection import load_json_data_from_FPL_url, parse_main_FPL_API
+from .FPL_data_processing import calculate_players_scores_weighted_avg_sum, team_selection_using_linear_optimization, turn_series_to_float
+from .FPL_data_visualization import visualize_team_selection_442, visualize_team_selection_352, visualize_team_selection_343, visualize_team_selection_433
 
 
 def play_wildcard(formation_to_draw:int):

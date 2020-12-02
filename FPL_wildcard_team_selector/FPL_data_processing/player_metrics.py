@@ -1,5 +1,5 @@
 import pandas as pd
-from FPL_data_collection import get_players_future_games_info
+from FPL_squad_selector.FPL_data_collection import get_players_future_games_info
 
 
 def get_players_ROI(players_info):
