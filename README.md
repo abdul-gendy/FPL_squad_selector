@@ -1,4 +1,4 @@
-# FPL team selector
+# FPL squad selector
 
 This package selects the best 15 players to choose when playing a wildcard on Fantasy premier league on any given week
 
