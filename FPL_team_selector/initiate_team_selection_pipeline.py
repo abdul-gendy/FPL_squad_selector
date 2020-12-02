@@ -18,7 +18,7 @@ def play_wildcard(formation_to_draw:int):
     players_info = turn_series_to_float(players_info, columns_to_turn_to_floats)
 
     #form, ROI, ptsPerGame, ICT index, ep_next, Future Games Score
-    Regular_Scoring_Weights = [0.2, 0.0 , 0.3, 0.1, 0.1, 0.3] 
+    Regular_Scoring_Weights = [0.2, 0.0 , 0.3, 0.1, 0.15, 0.25] 
     players_info = calculate_players_scores_weighted_avg_sum(players_info, Regular_Scoring_Weights)
 
     ListOfGoalies, ListOfDef, ListOfMid, ListOfStr, Cash_Left = team_selection_using_linear_optimization(players_info)
