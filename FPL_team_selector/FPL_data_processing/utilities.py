@@ -1,5 +1,6 @@
 import pandas as pd
 
+
 def split_based_on_player_position(players_info):
     '''
     takes in a DataFrame containing all the players info, and splits that DataFrame into multiple DataFrames based on player positions
@@ -76,7 +77,7 @@ def set_range_one_to_ten(players_info, columns_to_adjust):
     for column in columns_to_adjust:
         players_info.sort_values(by=column, inplace = True, ascending=False)
         Highest_Value_In_Col = players_info[column].values[0]
-        players_info[column] = (players_info[column]/Highest_Value_In_Col) * 10
+        players_info.loc[:,column] = (players_info[column]/Highest_Value_In_Col) * 10
 
 
 def turn_series_to_float(players_info, columns_to_adjust):
@@ -107,8 +108,7 @@ def add_players_full_name(players_info):
         players_info (DataFrame): DataFrame containing all the players info that was read from the main fantasy premier league API
 
     '''
-    players_info['full_name'] = players_info['first_name'] + '_' + players_info ['second_name']
-    players_info['full_name'].str.replace(" ","")
+    players_info.loc[:,'full_name'] = players_info['first_name'].str.replace(" ","_") + "_" + players_info['second_name'].str.replace(" ","_")
 
 
 def score_and_cost_dict_creator(players_info):
@@ -128,5 +128,4 @@ def score_and_cost_dict_creator(players_info):
     players_costs = pd.Series.tolist(players_info['now_cost'])
     players_score_dict = dict(zip(players_names_list, players_ratings))
     players_cost_dict = dict(zip(players_names_list, players_costs))
-    
     return players_names_list, players_score_dict, players_cost_dict

@@ -9,6 +9,7 @@ def play_wildcard(formation_to_draw:int):
     if formation_to_draw not in valid_formations:
         raise ValueError("Undefined formation requested. Please select one of the following formations: 442, 433, 352, 343")
 
+    print("currently selecting the best 15 players for your wildcard, please be patient. This may take a few minutes")
     FPL_API_url = 'https://fantasy.premierleague.com/api/bootstrap-static/'
     JSON_Data = load_json_data_from_FPL_url(FPL_API_url)
     players_info, teams_info, events_info = parse_main_FPL_API(JSON_Data)
@@ -32,10 +33,11 @@ def play_wildcard(formation_to_draw:int):
         visualization_object = visualize_team_selection_343(ListOfGoalies, ListOfDef, ListOfMid, ListOfStr, Cash_Left)
     else:
         raise ValueError("Undefined formation requested. Please select one of the following formations: 442, 433, 352, 343")
+
+    print("Team selection is done. To exit the program, you can close the graphics tab")
     visualization_object.run_visualization()
 
 
 if __name__ == "__main__":
-    print("currently selecting the best 15 players for your wildcard, please be patient. This may take a few minutes")
     formation = int(sys.argv[1])
     play_wildcard(formation)

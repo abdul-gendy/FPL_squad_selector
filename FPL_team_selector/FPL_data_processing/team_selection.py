@@ -1,7 +1,7 @@
 import pulp as p 
 import pandas as pd
 from .utilities import split_based_on_teams_and_players_positions, add_players_full_name, score_and_cost_dict_creator
-from pdb import set_trace as bp
+
 
 def team_selection_using_linear_optimization(players_info):
     '''
@@ -22,7 +22,6 @@ def team_selection_using_linear_optimization(players_info):
     '''
     number_of_prem_teams = 20
     number_of_playing_positions = 4
-    bp()
     add_players_full_name(players_info)
     players_info_list_of_dataframes = split_based_on_teams_and_players_positions(players_info)
 
@@ -37,7 +36,7 @@ def team_selection_using_linear_optimization(players_info):
         list_of_teams.append(list_of_positions)
 
     # Create a LP Maximization problem 
-    Lp_prob = p.LpProblem('Select Team of 15 with highest expected returns', p.LpMaximize)  
+    Lp_prob = p.LpProblem('Select_Team_of_15_with_highest_expected_returns', p.LpMaximize)  
 
     #Create problem variables
     team_variables = []
@@ -129,8 +128,5 @@ def team_selection_using_linear_optimization(players_info):
             elif variable.name[0] == 'S': 
                 list_of_selected_strikers.append(variable.name)
             else:
-                print("Unknown Variable Name")
-
+                raise ValueError("Variable name used in the linear optimization problem cant be deciphered by the algorithm")
     return list_of_selected_goalies, list_of_selected_defenders, list_of_selected_midfielders, list_of_selected_strikers, cash_left
-
-

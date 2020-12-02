@@ -1,5 +1,6 @@
 import turtle
 
+
 class visualize_team_selection_442:
     def __init__(self, list_of_goalies, list_of_defenders, list_of_midfielders, list_of_strikers, cash_left):
         self.list_of_goalies = list_of_goalies
@@ -10,15 +11,8 @@ class visualize_team_selection_442:
 
     def draw_pitch(self):
         '''
-        sends a Get request to the specified Fantasy Premier League url and returns the received json string as a dictionary. 
-
-        Parameters:
-            url (str): url to the fantasy premier league API
-
-        Returns:
-            data (dict): dictionary containing all the data from the url 
+        Uses turtle graphics to visualize a soccer field 
         '''
-        
         GREEN="#149118"
         screen = turtle.Screen()
         screen.tracer(0)
@@ -253,3 +247,4 @@ class visualize_team_selection_433(visualize_team_selection_442):
         self.draw_player("yellow", -150, 150, self.list_of_strikers[0]) 
         self.draw_player("yellow", 0, 150, self.list_of_strikers[1]) 
         self.draw_player("yellow", 150, 150, self.list_of_strikers[2]) 
+        

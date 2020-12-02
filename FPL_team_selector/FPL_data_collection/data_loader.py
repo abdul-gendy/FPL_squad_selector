@@ -45,7 +45,6 @@ def parse_main_FPL_API(FPL_API_data_dict:dict):
     players_df = pd.DataFrame(players)
     teams_df = pd.DataFrame(teams)
     events_df = pd.DataFrame(events)
-
     return players_df, teams_df, events_df
 
 
