@@ -1,1 +1,1 @@
-from .data_loader import *
+from .data_loader_fpl_api import *
