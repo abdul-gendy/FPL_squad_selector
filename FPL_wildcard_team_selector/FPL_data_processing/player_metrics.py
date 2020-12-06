@@ -48,3 +48,5 @@ def get_players_future_games_scores(players_info, Num_Future_Games_To_Analyze, f
         players_team = players_info.loc[i,'team']
         players_next_n_games_difficulty_mean = future_fixtures_difficulty_dict[str(players_team)]
         players_info.loc[i,'Future Games Score'] = (5-players_next_n_games_difficulty_mean)
+
+

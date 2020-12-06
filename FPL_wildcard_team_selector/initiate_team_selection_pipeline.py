@@ -19,15 +19,15 @@ def play_wildcard(formation_to_draw:int):
     understat_players_info = load_player_data_from_understat(understat_players_and_teams_info_url)
     
     combine_data_from_fpl_understat(fpl_players_info,understat_players_info)
-    columns_to_turn_to_floats = ['form','points_per_game','ict_index','ep_next']
+    columns_to_turn_to_floats = ['form','points_per_game','ict_index','ep_next', 'npxG', 'xA']
     fpl_players_info = turn_series_to_float(fpl_players_info, columns_to_turn_to_floats)
 
     add_players_full_name(fpl_players_info)
     get_players_ROI(fpl_players_info)
     get_players_future_games_scores(fpl_players_info, Number_of_future_games_to_analyze, fpl_fixtures_info_api_url)
 
-    #form, ROI, ptsPerGame, ICT index, ep_next, Future Games Score
-    Regular_Scoring_Weights = [0.2, 0.0 , 0.3, 0.1, 0.15, 0.25] 
+    #npxG, xA, form, pointspergame, ict_index, Future Games Score
+    Regular_Scoring_Weights = [0.4, 0.3 , 0.0, 0.0, 0.0, 0.3] 
     calculate_players_scores_weighted_avg_sum(fpl_players_info, Regular_Scoring_Weights)
     pprint.pprint(fpl_players_info)
 

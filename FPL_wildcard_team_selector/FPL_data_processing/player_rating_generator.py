@@ -13,14 +13,15 @@ def calculate_players_scores_weighted_avg_sum(players_info, weights):
     '''
     #Players_Filtered = players_info[players_info['minutes'] > 270]
     #Midfielder_Final_Filter = Defender_Initial_Filter[Goalies_Initial_Filter['chance_of_playing_next_round'] == 100] 
-    columns_to_normalize = ['form','points_per_game','ict_index','ep_next','ROI','Future Games Score']
+    columns_to_normalize = ['form','points_per_game','ict_index','ep_next','ROI','Future Games Score', 'npxG', 'xA']
     set_range_one_to_ten(players_info, columns_to_normalize)
 
+    #npxG, xA, form, pointspergame, ict_index, Future Games Score
     sum_of_weights = weights[0] + weights[1] + weights[2] + weights[3] + weights[4]
-    players_info.loc[:,'Algorithm Score'] = ((players_info['form'].multiply(weights[0])) 
-                                        + (players_info['ROI'].multiply(weights[1])) 
-                                        + (players_info['points_per_game'].multiply(weights[2]))
-                                        + (players_info['ict_index'].multiply(weights[3]))
-                                        + (players_info['ep_next'].multiply(weights[4]))                          
+    players_info.loc[:,'Algorithm Score'] = ((players_info['npxG'].multiply(weights[0])) 
+                                        + (players_info['xA'].multiply(weights[1])) 
+                                        + (players_info['form'].multiply(weights[2]))
+                                        + (players_info['points_per_game'].multiply(weights[3]))
+                                        + (players_info['ict_index'].multiply(weights[4]))                          
                                         + (players_info['Future Games Score'].multiply(weights[5]))) / sum_of_weights                       
     players_info.sort_values(by='Algorithm Score', inplace = True, ascending=False) 
