@@ -1,6 +1,6 @@
 import pulp as p 
 import pandas as pd
-from .utilities import split_based_on_teams_and_players_positions, add_players_full_name, score_and_cost_dict_creator
+from .utilities import split_based_on_teams_and_players_positions, score_and_cost_dict_creator
 
 
 def team_selection_using_linear_optimization(players_info):
@@ -22,7 +22,6 @@ def team_selection_using_linear_optimization(players_info):
     '''
     number_of_prem_teams = 20
     number_of_playing_positions = 4
-    add_players_full_name(players_info)
     players_info_list_of_dataframes = split_based_on_teams_and_players_positions(players_info)
 
     list_of_teams = []
