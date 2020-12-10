@@ -24,6 +24,9 @@ def load_player_data_from_understat(understat_url:str):
     decoded_players_info = players_info_escape_sequences.encode('utf8').decode('unicode_escape')
     players_info_dict = json.loads(decoded_players_info) 
     players_info_df = pd.DataFrame(players_info_dict)
+    players_info_df = players_info_df.astype({'time':'float'})
+    players_info_df = players_info_df[players_info_df['time'] > 300]
+    players_info_df.reset_index(inplace=True)
     return players_info_df
 
 
@@ -54,6 +57,8 @@ def load_teams_data_from_understat(understat_url:str):
         for gameweek_dict in team_data:
             for key in stats_dict:
                 stats_dict[key] = stats_dict[key] + gameweek_dict[key]
+        stats_dict['npxGA90'] = stats_dict['npxGA'] / len(team_data)
+        stats_dict['npxG90'] = stats_dict['npxG'] / len(team_data)
         relevant_info_teams_info_dict[team_name] = stats_dict
     teams_info_df = pd.DataFrame(relevant_info_teams_info_dict)
     return teams_info_df
