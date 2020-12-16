@@ -94,9 +94,9 @@ def get_players_future_games_defending_ease(players_info, Num_Future_Games_To_An
             home_team = team_specific_fixtures_info_df['team_h'].iloc[i]
             away_team = team_specific_fixtures_info_df['team_a'].iloc[i]
             if home_team == int(key):
-                match_ease = teams_info_understat_url.loc['npxGA90',fpl_teams_dict[str(home_team)]] * teams_info_understat_url.loc['npxG90',fpl_teams_dict[str(away_team)]]
+                match_ease = 1/(teams_info_understat_url.loc['npxGA90',fpl_teams_dict[str(home_team)]] * teams_info_understat_url.loc['npxG90',fpl_teams_dict[str(away_team)]])
             elif away_team == int(key):
-                match_ease = teams_info_understat_url.loc['npxGA90',fpl_teams_dict[str(away_team)]] * teams_info_understat_url.loc['npxG90',fpl_teams_dict[str(home_team)]]
+                match_ease = 1/(teams_info_understat_url.loc['npxGA90',fpl_teams_dict[str(away_team)]] * teams_info_understat_url.loc['npxG90',fpl_teams_dict[str(home_team)]])
             else:
                 raise ValueError("using corrupted data frames, please check your sources")
             team_specific_defending_ease_list.append(match_ease)

@@ -21,7 +21,6 @@ def play_wildcard(formation_to_draw:int):
     combine_data_from_fpl_understat(fpl_players_info,understat_players_info)
     columns_to_turn_to_floats = ['form','points_per_game','ict_index','ep_next', 'npxG', 'xA','xG']
     fpl_players_info = turn_series_to_float(fpl_players_info, columns_to_turn_to_floats)
-    pprint.pprint(fpl_players_info)
 
     add_players_full_name(fpl_players_info)
     get_players_ROI(fpl_players_info)
@@ -30,11 +29,12 @@ def play_wildcard(formation_to_draw:int):
     get_players_future_games_defending_ease(fpl_players_info, Number_of_future_games_to_analyze, fpl_fixtures_info_api_url, understat_players_and_teams_info_url)
     get_players_future_games_attacking_ease(fpl_players_info, Number_of_future_games_to_analyze, fpl_fixtures_info_api_url, understat_players_and_teams_info_url)
 
-    #npxG, xA, form, pointspergame, ict_index, Future Games Score
-    Regular_Scoring_Weights = [0.0, 0.0 , 0.0, 0.0, 0.0, 1.0] 
-    calculate_players_scores_weighted_avg_sum(fpl_players_info, Regular_Scoring_Weights)
-    pprint.pprint(fpl_players_info)
-
+    #Future games attacking ease, Future games defending ease
+    srikers_midfielders_scoring_weights = [1.0, 0.0] 
+    defenders_goalies_scoring_weights = [0.65, 0.35] 
+    calculate_players_scores_weighted_avg_sum(fpl_players_info, srikers_midfielders_scoring_weights, defenders_goalies_scoring_weights)
+    fpl_players_info.to_csv(r'C:\Users\Dell\Desktop\current_development_projects\Fantasy_Premier_League_Team_Selector\FPL_wildcard_team_selector\test.csv')
+    
     ListOfGoalies, ListOfDef, ListOfMid, ListOfStr, Cash_Left = team_selection_using_linear_optimization(fpl_players_info)
     if formation_to_draw == 442:
         visualization_object = visualize_team_selection_442(ListOfGoalies, ListOfDef, ListOfMid, ListOfStr, Cash_Left)

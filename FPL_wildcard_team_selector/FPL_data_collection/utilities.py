@@ -24,7 +24,7 @@ def combine_data_from_fpl_understat(fpl_api_players_info_df, understat_url_playe
         for index, name in understat_player_names.items():
             best_match, ratio = process.extractOne(name, fpl_player_names.tolist())
             #print(name, ", ", best_match, ",",ratio, '\n')
-            player_index = fpl_api_players_info_df.loc[fpl_api_players_info_df['web_name'] == best_match].index[0]
+            player_index = fpl_api_players_info_df.loc[(fpl_api_players_info_df['team']==int(key)) & (fpl_api_players_info_df['web_name'] == best_match)].index[0]
             for stat in understat_relevant_player_stats:
                 fpl_api_players_info_df.loc[player_index,stat] = specific_team_players_info_understat.loc[index, stat]
     manual_combination_for_select_players(fpl_api_players_info_df, understat_url_players_info_df)
