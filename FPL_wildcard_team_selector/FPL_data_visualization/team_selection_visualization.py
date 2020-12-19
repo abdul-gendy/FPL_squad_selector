@@ -115,10 +115,10 @@ class visualize_team_selection_442:
 
     def draw_bench(self):
         #Will have 1 defenders, 1 midfielder, 1 striker, 1 goalie on bench
-        self.draw_player("red", -260, -270, self.list_of_goalies[1]) 
-        self.draw_player("red", -140, -270, self.list_of_defenders[4]) 
-        self.draw_player("red", -20, -270, self.list_of_midfielders[4]) 
-        self.draw_player("red", 100, -270, self.list_of_strikers[2]) 
+        self.draw_player("red", -300, -270, self.list_of_goalies[1]) 
+        self.draw_player("red", -150, -270, self.list_of_defenders[4]) 
+        self.draw_player("red", 0, -270, self.list_of_midfielders[4]) 
+        self.draw_player("red", 150, -270, self.list_of_strikers[2]) 
         #Add Cash Remaining:
         cash_left_label = "Cash Remaining: " + str(self.cash_left)
         self.draw_player("white", 300, -270, cash_left_label)
@@ -128,10 +128,10 @@ class visualize_team_selection_442:
         self.draw_player("blue", -0, -190, self.list_of_goalies[0]) 
 
         #Draw 4 defenders
-        self.draw_player("yellow", 175, -120, self.list_of_defenders[0]) 
-        self.draw_player("yellow", -60, -120, self.list_of_defenders[1]) 
-        self.draw_player("yellow", 60, -120, self.list_of_defenders[2]) 
-        self.draw_player("yellow", -175, -120, self.list_of_defenders[3]) 
+        self.draw_player("yellow", 225, -120, self.list_of_defenders[0]) 
+        self.draw_player("yellow", -75, -120, self.list_of_defenders[1]) 
+        self.draw_player("yellow", 75, -120, self.list_of_defenders[2]) 
+        self.draw_player("yellow", -225, -120, self.list_of_defenders[3]) 
 
         #Draw 4 Midfielders
         self.draw_player("yellow", 225, 20, self.list_of_midfielders[0]) 
@@ -140,8 +140,8 @@ class visualize_team_selection_442:
         self.draw_player("yellow", -225, 20, self.list_of_midfielders[3]) 
 
         #Draw 2 Strikers
-        self.draw_player("yellow", -60, 150, self.list_of_strikers[0]) 
-        self.draw_player("yellow", 60, 150, self.list_of_strikers[1]) 
+        self.draw_player("yellow", -80, 150, self.list_of_strikers[0]) 
+        self.draw_player("yellow", 80, 150, self.list_of_strikers[1]) 
 
     def run_visualization(self):
         self.draw_pitch()
@@ -154,10 +154,10 @@ class visualize_team_selection_343(visualize_team_selection_442):
 
     def draw_bench(self):
        #Will have 2 defenders, 1 midfielder, 1 goalie on bench
-        self.draw_player("red", -260, -270, self.list_of_goalies[1]) 
-        self.draw_player("red", -140, -270, self.list_of_defenders[3]) 
-        self.draw_player("red", -20, -270, self.list_of_defenders[4]) 
-        self.draw_player("red", 100, -270, self.list_of_midfielders[4]) 
+        self.draw_player("red", -300, -270, self.list_of_goalies[1]) 
+        self.draw_player("red", -150, -270, self.list_of_defenders[3]) 
+        self.draw_player("red", 0, -270, self.list_of_defenders[4]) 
+        self.draw_player("red", 150, -270, self.list_of_midfielders[4]) 
         #Add Cash Remaining:
         cash_left_label = "Cash Remaining: " + str(self.cash_left)
         self.draw_player("white", 300, -270, cash_left_label)
@@ -167,9 +167,9 @@ class visualize_team_selection_343(visualize_team_selection_442):
         self.draw_player("blue", -0, -190, self.list_of_goalies[0]) 
 
         #Draw 3 defenders
-        self.draw_player("yellow", -150, -130, self.list_of_defenders[0]) 
+        self.draw_player("yellow", -160, -130, self.list_of_defenders[0]) 
         self.draw_player("yellow", 0, -130, self.list_of_defenders[1]) 
-        self.draw_player("yellow", 150, -130, self.list_of_defenders[2]) 
+        self.draw_player("yellow", 160, -130, self.list_of_defenders[2]) 
 
         #Draw 4 Midfielders
         self.draw_player("yellow", 225, 20, self.list_of_midfielders[0]) 
@@ -178,19 +178,19 @@ class visualize_team_selection_343(visualize_team_selection_442):
         self.draw_player("yellow", -225, 20, self.list_of_midfielders[3]) 
 
         #Draw 3 Strikers
-        self.draw_player("yellow", -150, 150, self.list_of_strikers[0]) 
+        self.draw_player("yellow", -160, 150, self.list_of_strikers[0]) 
         self.draw_player("yellow", 0, 150, self.list_of_strikers[1]) 
-        self.draw_player("yellow", 150, 150, self.list_of_strikers[2]) 
+        self.draw_player("yellow", 160, 150, self.list_of_strikers[2]) 
 
 
 class visualize_team_selection_352(visualize_team_selection_442):
 
     def draw_bench(self):
         #Will have 2 defenders 1 striker, 1 goalie on bench
-        self.draw_player("red", -260, -270, self.list_of_goalies[1]) 
-        self.draw_player("red", -140, -270, self.list_of_defenders[3]) 
-        self.draw_player("red", -20, -270, self.list_of_defenders[4]) 
-        self.draw_player("red", 100, -270, self.list_of_strikers[2]) 
+        self.draw_player("red", -300, -270, self.list_of_goalies[1]) 
+        self.draw_player("red", -150, -270, self.list_of_defenders[3]) 
+        self.draw_player("red", 0, -270, self.list_of_defenders[4]) 
+        self.draw_player("red", 150, -270, self.list_of_strikers[2]) 
         #Add Cash Remaining:
         cash_left_label = "Cash Remaining: " + str(self.cash_left)
         self.draw_player("white", 300, -270, cash_left_label)
@@ -200,9 +200,9 @@ class visualize_team_selection_352(visualize_team_selection_442):
         self.draw_player("blue", -0, -190, self.list_of_goalies[0]) 
 
         #Draw 3 defenders
-        self.draw_player("yellow", -150, -130, self.list_of_defenders[0]) 
+        self.draw_player("yellow", -160, -130, self.list_of_defenders[0]) 
         self.draw_player("yellow", 0, -130, self.list_of_defenders[1]) 
-        self.draw_player("yellow", 150, -130, self.list_of_defenders[2]) 
+        self.draw_player("yellow", 160, -130, self.list_of_defenders[2]) 
 
         #Draw 5 Midfielders
         self.draw_player("yellow", 220, 20, self.list_of_midfielders[0]) 
@@ -212,18 +212,18 @@ class visualize_team_selection_352(visualize_team_selection_442):
         self.draw_player("yellow", -220, 20, self.list_of_midfielders[4]) 
 
         #Draw 2 Strikers
-        self.draw_player("yellow", -75, 150, self.list_of_strikers[0]) 
-        self.draw_player("yellow", 75, 150, self.list_of_strikers[1])  
+        self.draw_player("yellow", -80, 150, self.list_of_strikers[0]) 
+        self.draw_player("yellow", 80, 150, self.list_of_strikers[1])  
 
 
 class visualize_team_selection_433(visualize_team_selection_442):
 
     def draw_bench(self):
        #Will have 2 defenders, 1 midfielder, 1 goalie on bench
-        self.draw_player("red", -260, -270, self.list_of_goalies[1]) 
-        self.draw_player("red", -140, -270, self.list_of_defenders[4]) 
-        self.draw_player("red", -20, -270, self.list_of_midfielders[3]) 
-        self.draw_player("red", 100, -270, self.list_of_midfielders[4]) 
+        self.draw_player("red", -300, -270, self.list_of_goalies[1]) 
+        self.draw_player("red", -150, -270, self.list_of_defenders[4]) 
+        self.draw_player("red", 0, -270, self.list_of_midfielders[3]) 
+        self.draw_player("red", 150, -270, self.list_of_midfielders[4]) 
         #Add Cash Remaining:
         cash_left_label = "Cash Remaining: " + str(self.cash_left)
         self.draw_player("white", 300, -270, cash_left_label)
@@ -239,12 +239,12 @@ class visualize_team_selection_433(visualize_team_selection_442):
         self.draw_player("yellow", -225, -130, self.list_of_defenders[3]) 
  
         #Draw 3 Midfielders
-        self.draw_player("yellow", -150, 20, self.list_of_midfielders[0]) 
+        self.draw_player("yellow", -170, 20, self.list_of_midfielders[0]) 
         self.draw_player("yellow", 0, 20, self.list_of_midfielders[1]) 
-        self.draw_player("yellow", 150, 20, self.list_of_midfielders[2]) 
+        self.draw_player("yellow", 170, 20, self.list_of_midfielders[2]) 
         
         #Draw 3 Strikers
-        self.draw_player("yellow", -150, 150, self.list_of_strikers[0]) 
+        self.draw_player("yellow", -170, 150, self.list_of_strikers[0]) 
         self.draw_player("yellow", 0, 150, self.list_of_strikers[1]) 
-        self.draw_player("yellow", 150, 150, self.list_of_strikers[2]) 
+        self.draw_player("yellow", 170, 150, self.list_of_strikers[2]) 
         

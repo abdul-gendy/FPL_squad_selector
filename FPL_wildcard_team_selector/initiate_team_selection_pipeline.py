@@ -4,7 +4,7 @@ from .FPL_data_processing import get_players_future_games_attacking_ease, get_pl
 from .FPL_data_visualization import visualize_team_selection_442, visualize_team_selection_352, visualize_team_selection_343, visualize_team_selection_433
 import pprint
 
-def play_wildcard(formation_to_draw:int):
+def play_wildcard(formation_to_draw:int, minimum_number_of_minutes_played=540, Number_of_future_games_to_analyze=3 ):
     valid_formations = [433, 442, 352, 343]
     if formation_to_draw not in valid_formations:
         raise ValueError("Undefined formation requested. Please select one of the following formations: 442, 433, 352, 343")
@@ -12,13 +12,14 @@ def play_wildcard(formation_to_draw:int):
     fpl_main_api_url = 'https://fantasy.premierleague.com/api/bootstrap-static/'
     fpl_fixtures_info_api_url = 'https://fantasy.premierleague.com/api/fixtures/'
     understat_players_and_teams_info_url = 'https://understat.com/league/EPL/2020'
-    Number_of_future_games_to_analyze = 3
     
     print("currently selecting the best 15 players for your wildcard, please be patient. This may take a few minutes")
     fpl_players_info, fpl_teams_info = parse_main_FPL_API(fpl_main_api_url)
-    understat_players_info = load_player_data_from_understat(understat_players_and_teams_info_url)
+    understat_players_info = load_player_data_from_understat(understat_players_and_teams_info_url, minimum_number_of_minutes_played)
     
     combine_data_from_fpl_understat(fpl_players_info,understat_players_info)
+    fpl_players_info = fpl_players_info[fpl_players_info['minutes'] > minimum_number_of_minutes_played]
+    fpl_players_info.reset_index(inplace=True)
     columns_to_turn_to_floats = ['form','points_per_game','ict_index','ep_next', 'npxG', 'xA','xG']
     fpl_players_info = turn_series_to_float(fpl_players_info, columns_to_turn_to_floats)
 

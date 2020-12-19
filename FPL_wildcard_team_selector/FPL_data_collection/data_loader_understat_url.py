@@ -4,7 +4,7 @@ import requests
 from bs4 import BeautifulSoup
 
 
-def load_player_data_from_understat(understat_url:str):
+def load_player_data_from_understat(understat_url:str, minimum_number_of_minutes_played:int):
     '''
     web scrapes all the relevant player information from the understat url.
 
@@ -25,7 +25,7 @@ def load_player_data_from_understat(understat_url:str):
     players_info_dict = json.loads(decoded_players_info) 
     players_info_df = pd.DataFrame(players_info_dict)
     players_info_df = players_info_df.astype({'time':'float'})
-    players_info_df = players_info_df[players_info_df['time'] > 300]
+    players_info_df = players_info_df[players_info_df['time'] > minimum_number_of_minutes_played]
     players_info_df.reset_index(inplace=True)
     return players_info_df
 

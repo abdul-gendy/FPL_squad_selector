@@ -50,8 +50,10 @@ def manual_combination_for_select_players(fpl_api_players_info_df, understat_url
         fpl_player_names = specific_team_players_info_fpl['web_name']
         understat_player_names = specific_team_players_info_understat['player_name']
 
-        understat_df_player_index = specific_team_players_info_understat.loc[specific_team_players_info_understat['player_name']==player_name_on_understat].index[0]
-        fpl_df_player_index = specific_team_players_info_fpl.loc[specific_team_players_info_fpl['web_name'] == player_name_on_fpl].index[0]
+        if player_name_on_understat in understat_player_names.values:
+            #print(player_name_on_understat, 'exists in Dataframe')
+            understat_df_player_index = specific_team_players_info_understat.loc[specific_team_players_info_understat['player_name']==player_name_on_understat].index[0]
+            fpl_df_player_index = specific_team_players_info_fpl.loc[specific_team_players_info_fpl['web_name'] == player_name_on_fpl].index[0]
 
-        for stat in understat_relevant_player_stats:
-            fpl_api_players_info_df.loc[fpl_df_player_index,stat] = specific_team_players_info_understat.loc[understat_df_player_index, stat]
+            for stat in understat_relevant_player_stats:
+                fpl_api_players_info_df.loc[fpl_df_player_index,stat] = specific_team_players_info_understat.loc[understat_df_player_index, stat]
