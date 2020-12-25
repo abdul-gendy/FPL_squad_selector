@@ -12,7 +12,7 @@ def play_wildcard(formation_to_draw:int, minimum_number_of_minutes_played=540, n
     fpl_fixtures_info_api_url = 'https://fantasy.premierleague.com/api/fixtures/'
     understat_players_and_teams_info_url = 'https://understat.com/league/EPL/2020'
     
-    print("currently selecting the best 15 players for your wildcard, please be patient. This may take a few minutes")
+    print(" currently selecting the best 15 players for your wildcard, please be patient. This may take a few seconds")
     fpl_players_info, fpl_teams_info = dc.parse_main_FPL_API(fpl_main_api_url)
     understat_players_info = dc.load_player_data_from_understat(understat_players_and_teams_info_url, minimum_number_of_minutes_played)
     dc.combine_data_from_fpl_understat(fpl_players_info,understat_players_info)
@@ -60,6 +60,6 @@ def play_wildcard(formation_to_draw:int, minimum_number_of_minutes_played=540, n
                             'goals_scored','npg','xG', 'npxG', 'npxG90', 'npG90', 'xG90', 'G90', 'chance_conversion_ability', 'assists',
                             'xA', 'xA90', 'A90', 'assisting_ability','future games attacking ease', 'future games defending ease', 'Algorithm Score']
     fpl_players_info[columns_to_add_to_csv].to_csv(csv_path)
-  
-    print("Team selection is done. To exit the program, you can close the graphics tab")
+    print(" Team selection is done. You can find a csv containing detailed stats about all the players in the following path:\n {path}".format(path=csv_path))
+    print(" To exit the program, you can close the graphics tab")
     visualization_object.run_visualization()
