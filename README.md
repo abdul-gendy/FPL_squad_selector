@@ -37,7 +37,7 @@ This function takes in the following 4 arguments:
   - whether or not you want to account for penalties during the analysis
 
 ```
-FPL_wildcard_team_selector.play_wildcard(formation_to_draw=433, minimum_number_of_minutes_played=600, Number_of_future_games_to_analyze=3, account_for_penalties=True)
+FPL_wildcard_team_selector.play_wildcard(formation_to_draw=433, minimum_number_of_minutes_played=600, number_of_future_games_to_analyze=3, account_for_penalties=True)
 ```
 
 ### Sample Output

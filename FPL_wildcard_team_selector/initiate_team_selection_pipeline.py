@@ -3,7 +3,7 @@ import FPL_wildcard_team_selector.FPL_data_processing as dp
 import FPL_wildcard_team_selector.FPL_data_visualization as dv
 import os
 
-def play_wildcard(formation_to_draw:int, minimum_number_of_minutes_played=540, Number_of_future_games_to_analyze=3, account_for_penalties=True):
+def play_wildcard(formation_to_draw:int, minimum_number_of_minutes_played=540, number_of_future_games_to_analyze=3, account_for_penalties=True):
     valid_formations = [433, 442, 352, 343]
     if formation_to_draw not in valid_formations:
         raise ValueError("Undefined formation requested. Please select one of the following formations: 442, 433, 352, 343")
@@ -33,8 +33,8 @@ def play_wildcard(formation_to_draw:int, minimum_number_of_minutes_played=540, N
     dp.get_xA90(fpl_players_info)
     dp.get_assisting_ability(fpl_players_info)
     dp.get_chance_conversion_ability(fpl_players_info, account_for_penalties)
-    dp.get_players_future_games_defending_ease(fpl_players_info, Number_of_future_games_to_analyze, account_for_penalties, fpl_fixtures_info_api_url, understat_players_and_teams_info_url)
-    dp.get_players_future_games_attacking_ease(fpl_players_info, Number_of_future_games_to_analyze, account_for_penalties, fpl_fixtures_info_api_url, understat_players_and_teams_info_url)
+    dp.get_players_future_games_defending_ease(fpl_players_info, number_of_future_games_to_analyze, account_for_penalties, fpl_fixtures_info_api_url, understat_players_and_teams_info_url)
+    dp.get_players_future_games_attacking_ease(fpl_players_info, number_of_future_games_to_analyze, account_for_penalties, fpl_fixtures_info_api_url, understat_players_and_teams_info_url)
 
     #Future games attacking ease, Future games defending ease, chance conversion ability, assisting ability, ROI
     srikers_midfielders_scoring_weights = [0.5, 0.0, 0.1, 0.1, 0.2] 
