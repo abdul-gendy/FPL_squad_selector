@@ -31,9 +31,9 @@ import FPL_wildcard_team_selector
 
 This function takes in the following 4 arguments: 
 
-  - the formation that you want to be displayed during the selection visualization. It should be one of the following: 442, 433, 343, 352
-  - the minimum number of minutes that a player needs to have played in the premier league this season for him to be considered for selection
-  - the number of future gameweeks to analyze
+  - formation that you want to be displayed during the selection visualization. It should be one of the following: 442, 433, 343, 352
+  - minimum number of minutes that a player needs to have played in the PL this season for him to be considered for selection
+  - number of future gameweeks to analyze
   - whether or not you want to account for penalties during the analysis
 
 ```
