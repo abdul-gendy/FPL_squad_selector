@@ -43,4 +43,4 @@ FPL_wildcard_team_selector.play_wildcard(formation_to_draw=433, minimum_number_o
 ### Sample Output
 
 <img src="test/sample_outputs/Team1.PNG" alt="alt text" width="700" height="700">
-<img src="test/sample_outputs/sample_csv.PNG" alt="alt text" width="1200" height="600">
+<img src="test/sample_outputs/sample_csv.PNG" alt="alt text" width="1300" height="500">
