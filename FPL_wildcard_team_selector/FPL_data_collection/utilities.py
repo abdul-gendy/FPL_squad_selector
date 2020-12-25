@@ -39,9 +39,13 @@ def manual_combination_for_select_players(fpl_api_players_info_df, understat_url
         fpl_api_players_info_df (DataFrame): Dataframe containing players info from fpl api
         understat_url_players_info_df (DataFrame): Dataframe containing players info from understat
     '''
-    manual_addition_players = [('17','Davinson Sánchez','Sánchez'),
-                                ('9','James Maddison','Maddison'),('9','James Justin','Justin'),
-                                ('8','Bobby Reid','Decordova-Reid'),('8','Franck Zambo','Anguissa')]
+    manual_addition_players = [('17','Davinson Sánchez','Sánchez'), ('17','Son Heung-Min','Son'),
+                                ('9','James Maddison','Maddison'), ('9','Matthew James','James'),
+                                ('9','James Justin','Justin'),
+                                ('8','Bobby Reid','Decordova-Reid'), ('8','Harrison Reed','Reed'),
+                                ('8','Franck Zambo','Anguissa'), ('8','Joe Bryan','Bryan'),
+                                ('5','Kepa','Arrizabalaga'), ('5','N&#039;Golo Kanté','Kanté'),
+                                ('1','Gabriel Martinelli','Martinelli'), ('1','Pablo Mari','Marí')]
 
     for key, player_name_on_understat, player_name_on_fpl in manual_addition_players:
         specific_team_players_info_fpl = fpl_api_players_info_df[fpl_api_players_info_df['team']==int(key)]

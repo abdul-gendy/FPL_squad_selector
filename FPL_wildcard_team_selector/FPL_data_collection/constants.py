@@ -3,4 +3,4 @@ fpl_teams_dict = {'1':'Arsenal', '2':'Aston Villa', '3':'Brighton', '4':'Burnley
     '14':'Newcastle United', '15':'Sheffield United', '16':'Southampton', '17':'Tottenham', '18':'West Bromwich Albion',
     '19':'West Ham', '20':'Wolverhampton Wanderers'}
 
-understat_relevant_player_stats = ['xG', 'xA', 'npxG', 'npg', 'shots', 'xGChain', 'xGBuildup']
+understat_relevant_player_stats = ['xG', 'xA', 'npxG', 'npg', 'assists', 'shots', 'xGChain', 'xGBuildup']

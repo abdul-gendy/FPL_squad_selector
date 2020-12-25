@@ -59,6 +59,8 @@ def load_teams_data_from_understat(understat_url:str):
                 stats_dict[key] = stats_dict[key] + gameweek_dict[key]
         stats_dict['npxGA90'] = stats_dict['npxGA'] / len(team_data)
         stats_dict['npxG90'] = stats_dict['npxG'] / len(team_data)
+        stats_dict['xGA90'] = stats_dict['xGA'] / len(team_data)
+        stats_dict['xG90'] = stats_dict['xG'] / len(team_data)
         relevant_info_teams_info_dict[team_name] = stats_dict
     teams_info_df = pd.DataFrame(relevant_info_teams_info_dict)
     return teams_info_df

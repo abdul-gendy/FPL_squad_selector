@@ -39,9 +39,6 @@ def parse_main_FPL_API(fpl_main_api_url:str):
     teams = FPL_API_data_dict['teams']
 
     players_df = pd.DataFrame(players)
-    players_df = players_df[players_df['minutes'] > 0]
-    players_df.reset_index(inplace=True)
-    #Midfielder_Final_Filter = Defender_Initial_Filter[Goalies_Initial_Filter['chance_of_playing_next_round'] == 100] 
     players_df = players_df[['id','first_name','second_name','web_name','element_type',
                             'team','minutes','goals_scored','assists','goals_conceded',
                             'now_cost','ep_next','form','total_points','ict_index',
