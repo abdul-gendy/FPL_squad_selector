@@ -1,6 +1,17 @@
 import pandas as pd
 from FPL_wildcard_team_selector.FPL_data_collection import get_future_fixtures_info, fpl_teams_dict, load_teams_data_from_understat
 
+def get_players_pts90(players_info):
+    '''
+    takes in a DataFrame containing all the players info, and adds a column series containing the 
+    "pts per 90" metric which is: pts90 = (total pts * 90)/minutes 
+
+    Parameters:
+        players_info (DataFrame): DataFrame containing all the players info that was read from the main fantasy premier league API
+
+    '''
+    players_info.loc[:,'pts90'] = (players_info['total_points']/players_info['minutes']) * 90
+
 
 def get_players_ROI(players_info):
     '''
@@ -11,7 +22,6 @@ def get_players_ROI(players_info):
         players_info (DataFrame): DataFrame containing all the players info that was read from the main fantasy premier league API
 
     '''
-    players_info.loc[:,'pts90'] = (players_info['total_points']/players_info['minutes']) * 90
     players_info.loc[:,'ROI'] = players_info['pts90']/players_info['now_cost']
 
 
