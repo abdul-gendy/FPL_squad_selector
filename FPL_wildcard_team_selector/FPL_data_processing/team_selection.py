@@ -3,7 +3,7 @@ import pandas as pd
 from .utilities import split_based_on_teams_and_players_positions, score_and_cost_dict_creator
 
 
-def team_selection_using_linear_optimization(players_info):
+def team_selection_using_linear_optimization(players_info, money_available):
     '''
     takes in a DataFrame containing all the players info that was read from the main fantasy premier league API,
     and all the calculated metrics that were added as columns. This function defines and solves a linear optimization problem
@@ -12,7 +12,8 @@ def team_selection_using_linear_optimization(players_info):
     Parameters:
         players_info (DataFrame): DataFrame containing all the players info that was read from the main fantasy premier league API,
                                     and all the calculated metrics that were added as columns
-
+        money_available (float): the amount of money available to spend on players.This differs between players as team values go up and down
+        
     Returns:
         list_of_selected_goalies (list): list containing the 2 selected goalies
         list_of_selected_defenders (list): list containing the 5 selected defender
@@ -71,7 +72,7 @@ def team_selection_using_linear_optimization(players_info):
         sum_of_segments = (sum_of_segments + constraint_segment_One 
                           + constraint_segment_Two + constraint_segment_Three
                           + constraint_segment_Four)
-    Lp_prob += (sum_of_segments) <= 1000
+    Lp_prob += (sum_of_segments) <= money_available
 
     #Number Of Players in each position constraints:
     sum_of_gol_segments = 0
@@ -109,12 +110,12 @@ def team_selection_using_linear_optimization(players_info):
     list_of_selected_midfielders = []
     list_of_selected_strikers = []
     list_of_selected_goalies = []
-    cash_left = 1000
+    cash_left = money_available
 
     for constraint in Lp_prob.constraints:
         Constraint_Value = Lp_prob.constraints[constraint].value() - Lp_prob.constraints[constraint].constant
         if(Constraint_Value > 800):
-            cash_left = (1000 - Constraint_Value) / 10
+            cash_left = (money_available - Constraint_Value) / 10
 
     for variable in Lp_prob.variables():
         if variable.varValue > 0:            

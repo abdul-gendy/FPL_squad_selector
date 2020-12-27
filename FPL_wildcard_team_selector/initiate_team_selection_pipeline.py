@@ -3,10 +3,7 @@ import FPL_wildcard_team_selector.FPL_data_processing as dp
 import FPL_wildcard_team_selector.FPL_data_visualization as dv
 import os
 
-def play_wildcard(formation_to_draw:int, minimum_number_of_minutes_played=540, number_of_future_games_to_analyze=3, account_for_penalties=True):
-    valid_formations = [433, 442, 352, 343]
-    if formation_to_draw not in valid_formations:
-        raise ValueError("Undefined formation requested. Please select one of the following formations: 442, 433, 352, 343")
+def play_wildcard(money_available=100, minimum_number_of_minutes_played=630, number_of_future_games_to_analyze=3, account_for_penalties=True):
 
     fpl_main_api_url = 'https://fantasy.premierleague.com/api/bootstrap-static/'
     fpl_fixtures_info_api_url = 'https://fantasy.premierleague.com/api/fixtures/'
@@ -41,18 +38,9 @@ def play_wildcard(formation_to_draw:int, minimum_number_of_minutes_played=540, n
     defenders_goalies_scoring_weights = [0.35, 0.15, 0.1, 0.1, 0.2]
 
     dp.calculate_players_scores_weighted_avg_sum(fpl_players_info, srikers_midfielders_scoring_weights, defenders_goalies_scoring_weights)
-    ListOfGoalies, ListOfDef, ListOfMid, ListOfStr, Cash_Left = dp.team_selection_using_linear_optimization(fpl_players_info)
+    ListOfGoalies, ListOfDef, ListOfMid, ListOfStr, Cash_Left = dp.team_selection_using_linear_optimization(fpl_players_info, (money_available*10))
 
-    if formation_to_draw == 442:
-        visualization_object = dv.visualize_team_selection_442(ListOfGoalies, ListOfDef, ListOfMid, ListOfStr, Cash_Left)
-    elif formation_to_draw == 433:
-        visualization_object = dv.visualize_team_selection_433(ListOfGoalies, ListOfDef, ListOfMid, ListOfStr, Cash_Left)
-    elif formation_to_draw == 352:
-        visualization_object = dv.visualize_team_selection_352(ListOfGoalies, ListOfDef, ListOfMid, ListOfStr, Cash_Left)
-    elif formation_to_draw == 343:
-        visualization_object = dv.visualize_team_selection_343(ListOfGoalies, ListOfDef, ListOfMid, ListOfStr, Cash_Left)
-    else:
-        raise ValueError("Undefined formation requested. Please select one of the following formations: 442, 433, 352, 343")
+    visualization_object = dv.visualize_team_selection(ListOfGoalies, ListOfDef, ListOfMid, ListOfStr, Cash_Left)
 
     fpl_players_info.loc[:,'now_cost'] = fpl_players_info['now_cost'] * 0.1
     csv_path = os.path.join(os.getcwd(),'FPL_detailed_players_stats.csv')
@@ -60,6 +48,8 @@ def play_wildcard(formation_to_draw:int, minimum_number_of_minutes_played=540, n
                             'goals_scored','npg','xG', 'npxG', 'npxG90', 'npG90', 'xG90', 'G90', 'chance_conversion_ability', 'assists',
                             'xA', 'xA90', 'A90', 'assisting_ability','future games attacking ease', 'future games defending ease', 'Algorithm Score']
     fpl_players_info[columns_to_add_to_csv].to_csv(csv_path)
+
     print(" Team selection is done. You can find a csv containing detailed stats about all the players in the following path:\n {path}".format(path=csv_path))
     print(" To exit the program, you can close the graphics tab")
+
     visualization_object.run_visualization()

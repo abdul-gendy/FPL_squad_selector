@@ -28,16 +28,16 @@ import FPL_wildcard_team_selector
 ```
 
 ##### call the play_wildcard function
-
+    play_wildcard(money_available, minimum_number_of_minutes_played, number_of_future_games_to_analyze, account_for_penalties)
 This function takes in the following 4 arguments: 
 
-  - formation that you want to be displayed during the selection visualization. It should be one of the following: 442, 433, 343, 352
+  - The amount of money that you have available. Check your team value to get an understanding of how much money you have
   - minimum number of minutes that a player needs to have played in the PL this season for him to be considered for selection
   - number of future gameweeks to analyze
-  - whether or not you want to account for penalties during the analysis
+  - whether or not you want to account for penalties during the analysis (If False, uses non-penalty stats)
 
 ```
-FPL_wildcard_team_selector.play_wildcard(formation_to_draw=433, minimum_number_of_minutes_played=600, number_of_future_games_to_analyze=3, account_for_penalties=True)
+FPL_wildcard_team_selector.play_wildcard(money_available=103.7, minimum_number_of_minutes_played=700, number_of_future_games_to_analyze=3, account_for_penalties=True)
 ```
 
 ### Sample Output
