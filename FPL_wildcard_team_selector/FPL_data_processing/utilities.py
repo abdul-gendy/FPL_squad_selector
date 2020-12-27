@@ -75,6 +75,10 @@ def set_range_one_to_ten(players_info, columns_to_adjust):
 
     '''
     for column in columns_to_adjust:
+        players_info.sort_values(by=column, inplace = True, ascending=True)
+        Lowest_Value_In_Col = players_info[column].values[0]
+        if Lowest_Value_In_Col < 0:
+            players_info.loc[:,column] = players_info[column] + abs(Lowest_Value_In_Col)
         players_info.sort_values(by=column, inplace = True, ascending=False)
         Highest_Value_In_Col = players_info[column].values[0]
         players_info.loc[:,column] = (players_info[column]/Highest_Value_In_Col) * 10

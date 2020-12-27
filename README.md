@@ -2,22 +2,22 @@
 
 This package selects the best 15 players to choose when playing a wildcard on Fantasy premier league on any given week
 
-  - Selects the best players by analyzing the latest data provided by the fantasy premier league API
+  - Selects the best players by analyzing the latest data provided by the fantasy premier league API, and other premier league stats sources
   - creates a visualization of the selected players
-
+  - creates a csv containing detailed stats on all the players available for selection
 
 ### Installation
 
-##### Using pip
+##### Option #1: Using pip
 
 You can install the package using pip by running the following:
 
 ```
 pip install FPL-wildcard-team-selector
 ```
-##### Download from source
+##### Option #2: Download from source
 
-Download the source code by cloning the [repository](https://github.com/abdul-gendy/FPL_team_selector). Install by navigating to the proper directory and running
+Download the source code by cloning the [repository](https://github.com/abdul-gendy/FPL_wildcard_team_selector). Install by navigating to the proper directory and running
 ```
 python setup.py install
 ```
@@ -26,12 +26,20 @@ python setup.py install
 ```
 import FPL_wildcard_team_selector
 ```
+
 ##### call the play_wildcard function
-  - This function takes in one argument which is the formation that you want to be displayed during the selection visualization. It should be one of the following: 442, 433, 343, 352
+This function takes in the following 4 arguments: 
+
+  - The amount of money that you have available. Check your team value to get an understanding of how much money you have
+  - minimum number of minutes that a player needs to have played in the PL this season for him to be considered for selection
+  - number of future gameweeks to analyze
+  - whether or not you want to account for penalties during the analysis (If False, uses non-penalty stats)
+
 ```
-FPL_wildcard_team_selector.play_wildcard(442)
+FPL_wildcard_team_selector.play_wildcard(money_available=103.7, minimum_number_of_minutes_played=700, number_of_future_games_to_analyze=3, account_for_penalties=True)
 ```
 
 ### Sample Output
 
 <img src="test/sample_outputs/Team1.PNG" alt="alt text" width="700" height="700">
+<img src="test/sample_outputs/sample_csv.PNG" alt="alt text" width="1400" height="500">

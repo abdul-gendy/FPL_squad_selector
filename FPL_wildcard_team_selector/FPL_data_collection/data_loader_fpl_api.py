@@ -7,18 +7,15 @@ def load_json_data_from_FPL_url(url:str):
     '''
     sends a Get request to the specified Fantasy Premier League url and returns the received json string as a dictionary. 
 
-    Parameters:
-        url (str): url to the fantasy premier league API
-
     Returns:
         data (dict): dictionary containing all the data from the url 
     '''
     server_response = requests.get(url) 
-    data = json.loads(server_response.content) 
+    data = json.loads(server_response.content)
     return data
 
 
-def parse_main_FPL_API(FPL_API_data_dict:dict):
+def parse_main_FPL_API(fpl_main_api_url:str):
     '''
     takes in all the data from the main Fantasy premier league API, and returns the most important data as DataFrames.
 
@@ -36,35 +33,31 @@ def parse_main_FPL_API(FPL_API_data_dict:dict):
     Returns:
         players_df (DataFrame): pandas DataFrame containing all the data about the players from the input dictionary
         teams_df (DataFrame): pandas DataFrame containing all the data about the premier league teams from the input dictionary
-        events_df (DataFrame): pandas DataFrame containing all the data about the premier league fixtures from the input dictionary
     '''
+    FPL_API_data_dict = load_json_data_from_FPL_url(fpl_main_api_url)
     players = FPL_API_data_dict['elements']
     teams = FPL_API_data_dict['teams']
-    events = FPL_API_data_dict['events']
 
     players_df = pd.DataFrame(players)
+    players_df = players_df[['id','first_name','second_name','web_name','element_type',
+                            'team','minutes','goals_scored','assists','goals_conceded',
+                            'now_cost','ep_next','form','total_points','ict_index',
+                            'points_per_game','chance_of_playing_next_round']]
     teams_df = pd.DataFrame(teams)
-    events_df = pd.DataFrame(events)
-    return players_df, teams_df, events_df
+    return players_df, teams_df
 
 
-def get_players_future_games_info(player_id:int):
+def get_future_fixtures_info(fpl_fixtures_info_api_url:str):
     '''
-    Fantasy premier league assigns a unique url to every premier league player. These URLs contain information specific to each player.
-    Fantasy premier league assigns every player a unique id which can be used to retrieve their unique URL. This function collects
-    the fixture information for the player whos id is provided as an input
+    This function collects the future fixture information for all the clubs in the premier league
 
     Parameters:
-        player_id (int): id of the player
+        fpl_fixtures_info_api_url (str): FPL api url for all fixture information
 
     Returns:
-        player_future_games_df (DataFrame): pandas DataFrame containing all the details about the upcoming fixtures for the player specified
+        fixtures_info_df (DataFrame): pandas DataFrame containing all the details about the upcoming fixtures for the premier league teams
     '''
-
-    fpl_player_API_url = 'https://fantasy.premierleague.com/api/element-summary/'
-    player_id_string = str(player_id) + '/'
-    complete_player_url = fpl_player_API_url + player_id_string
-    player_info_dict = load_json_data_from_FPL_url(complete_player_url)
-    fixtures_dict = player_info_dict['fixtures']
-    player_future_games_df = pd.DataFrame(fixtures_dict)
-    return player_future_games_df
+    fixtures_info_dict = load_json_data_from_FPL_url(fpl_fixtures_info_api_url)
+    fixtures_info_df = pd.DataFrame(fixtures_info_dict)
+    fixtures_info_df = fixtures_info_df[fixtures_info_df['started']==False]
+    return fixtures_info_df
