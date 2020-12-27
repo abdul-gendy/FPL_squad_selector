@@ -28,7 +28,6 @@ import FPL_wildcard_team_selector
 ```
 
 ##### call the play_wildcard function
-    play_wildcard(money_available, minimum_number_of_minutes_played, number_of_future_games_to_analyze, account_for_penalties)
 This function takes in the following 4 arguments: 
 
   - The amount of money that you have available. Check your team value to get an understanding of how much money you have
