@@ -12,7 +12,7 @@ setuptools.setup(
     long_description=long_description,
     long_description_content_type='text/markdown',
     url='https://github.com/abdul-gendy/FPL_wildcard_team_selector',
-    download_url="",
+    download_url="https://github.com/abdul-gendy/FPL_wildcard_team_selector/archive/v1.1.1.tar.gz",
     packages=setuptools.find_packages(),
     classifiers=[
         'Programming Language :: Python :: 3',
