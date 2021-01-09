@@ -8,7 +8,7 @@ setuptools.setup(
     version='1.1.1',
     author='Abdulrahman Elgendy',
     author_email='Abdul.Elgendy@outlook.com',
-    description='This package selects the best 15 players to choose when playing a wildcard on Fantasy premier league on any given week',
+    description='This package helps you select the best 15 players to choose when playing a wildcard on Fantasy premier league on any given week',
     long_description=long_description,
     long_description_content_type='text/markdown',
     url='https://github.com/abdul-gendy/FPL_wildcard_team_selector',
