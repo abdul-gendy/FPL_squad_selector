@@ -1,1 +1,1 @@
-from .initiate_team_selection_pipeline import play_wildcard
+from .initiate_team_selection_pipeline import play_wildcard, generate_player_stats
