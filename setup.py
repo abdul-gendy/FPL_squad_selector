@@ -5,14 +5,14 @@ with open('README.md', 'r') as fh:
 
 setuptools.setup(
     name='FPL_wildcard_team_selector',
-    version='1.0.1',
+    version='1.1.1',
     author='Abdulrahman Elgendy',
     author_email='Abdul.Elgendy@outlook.com',
-    description='This package selects the best 15 players to choose when playing a wildcard on Fantasy premier league on any given week',
+    description='This package helps you select the best 15 players to choose when playing a wildcard on Fantasy premier league on any given week',
     long_description=long_description,
     long_description_content_type='text/markdown',
     url='https://github.com/abdul-gendy/FPL_wildcard_team_selector',
-    download_url="https://github.com/abdul-gendy/FPL_wildcard_team_selector/archive/v1.0.1.tar.gz",
+    download_url="",
     packages=setuptools.find_packages(),
     classifiers=[
         'Programming Language :: Python :: 3',
